@@ -76,9 +76,9 @@ new Vue({
 		var sensor = document.querySelector("#product-list-bottom");
 		watcher = scrollMonitor.create(sensor);
 
-		watcher.enterViewport(function () {
-			this.appendResults();
-		});
+		watcher.enterViewport(
+			this.appendResults
+		);
 	},
 	beforeUpdate: function () {
 		if (watcher) {
