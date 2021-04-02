@@ -26,7 +26,8 @@
 		<link rel="stylesheet" type="text/css" href="/public/style.css" />
 	</head>
 	<body>
-		<div id="app">
+		<div id="app" v-cloak>
+			<div id="loading">Loading...</div>
 			<div class="header">
 				<div class="container">
 					<div class="title">
@@ -49,7 +50,7 @@
 				<div class="products">
 					<div v-if="loading">Loading...</div>
 					<div v-else class="search-results">
-						Found {{ products.length }} results for search term
+						Found {{ results.length }} results for search term
 						<em>{{ lastSearch }}</em>
 					</div>
 					<div
@@ -73,7 +74,13 @@
 							</button>
 						</div>
 					</div>
-					<div id="product-list-bottom"></div>
+					<div id="product-list-bottom">
+						<div
+							v-if="products.length === results.length && results.length > 0"
+						>
+							No more items
+						</div>
+					</div>
 				</div>
 				<div class="cart">
 					<h2>Shopping Cart</h2>
